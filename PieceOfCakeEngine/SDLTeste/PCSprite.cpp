@@ -12,7 +12,7 @@ PCSprite::PCSprite(void)
 
 PCSprite::~PCSprite(void)
 {
-
+	SDL_FreeSurface(m_rawContent);
 }
 
 PCSprite* PCSprite::fromFile( char* fileName )
@@ -34,14 +34,14 @@ PCSprite* PCSprite::fromFile( char* fileName )
 	SDL_FreeSurface(temp_surface);
 
 	PCSprite* returnSprite = new PCSprite();
-	returnSprite->rawContent = return_surface;
+	returnSprite->m_rawContent = return_surface;
 
 	return returnSprite;
 }
 
 SDL_Surface* PCSprite::getRaw()
 {
-	return rawContent;
+	return m_rawContent;
 }
 
 bool PCSprite::Draw( SDL_Surface* destination, SDL_Surface* source, int x, int y )
@@ -80,6 +80,18 @@ bool PCSprite::Draw( SDL_Surface* destination, SDL_Surface* source, int x, int y
 	destRect.y = y;
 
 	SDL_BlitSurface(source, &srcRect, destination, &destRect);
+
+	return true;
+}
+
+bool PCSprite::RemoveRGBColorFrom( PCSprite *src, int r, int g, int b )
+{
+	if(!src)
+	{
+		return false;
+	}
+
+	SDL_SetColorKey(src->getRaw(), SDL_SRCCOLORKEY | SDL_RLEACCEL, SDL_MapRGB(src->getRaw()->format, r,g,b ));
 
 	return true;
 }

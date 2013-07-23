@@ -72,13 +72,17 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PCEngine.cpp" />
     <ClCompile Include="PCEvent.cpp" />
+    <ClCompile Include="PCSize.cpp" />
     <ClCompile Include="PCSprite.cpp" />
+    <ClCompile Include="PCVec2D.cpp" />
     <ClCompile Include="TicTacToe.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PCEngine.h" />
     <ClInclude Include="PCEvent.h" />
+    <ClInclude Include="PCSize.h" />
     <ClInclude Include="PCSprite.h" />
+    <ClInclude Include="PCVec2D.h" />
     <ClInclude Include="TicTacToe.h" />
   </ItemGroup>
   <ItemGroup>

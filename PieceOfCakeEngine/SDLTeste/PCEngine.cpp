@@ -1,15 +1,26 @@
 #include "SDL.h"
 #include "PCEvent.h"
 #include "PCEngine.h"
+#include "PCSize.h"
 
 #include <fstream>
 #include <iostream>
 using namespace std;
 
+
+PCEngine::PCEngine(PCSize winSize)
+{
+	m_winSize = winSize;
+	m_display = nullptr;
+}
+
+
 PCEngine::PCEngine(void)
 {
-	running = true;
-	display = nullptr;
+	m_winSize.SetHeight(768);
+	m_winSize.SetWidth(1024);
+
+	m_display = nullptr;
 }
 
 
@@ -38,15 +49,13 @@ bool PCEngine::Initialize()
 		SDL_JoystickOpen(i);
 	}
 
-	display = SDL_SetVideoMode( 1024,768, 32, SDL_HWSURFACE | SDL_DOUBLEBUF );
+	m_display = SDL_SetVideoMode( m_winSize.GetWidth(), m_winSize.GetHeight(), 32, SDL_HWSURFACE | SDL_DOUBLEBUF );
 	
-	if( display == NULL) {
+	if( m_display == NULL) {
 		return false;
 	}
 
-	if((test = PCSprite::fromFile("Mario.jpg")) == NULL)
-		return false;
-
+	m_running = true;
 
 	return true;
 }
@@ -63,7 +72,7 @@ int PCEngine::OnExecute(){
 
 	SDL_Event event;
 
-	while (running)
+	while (m_running)
 	{
 		while(SDL_PollEvent(&event)){
 			this->OnEvent(&event);
@@ -87,7 +96,7 @@ void PCEngine::Render(){
 	//PCSprite::Draw(display, test->getRaw(),0,0);
 	//PCSprite::Draw(display, test->getRaw(),100,100, 0,0, 20, 20);
 
-	SDL_Flip(display);
+	SDL_Flip(m_display);
 }
 
 void PCEngine::Dispose(){
@@ -96,5 +105,15 @@ void PCEngine::Dispose(){
 
 void PCEngine::OnExit()
 {
-	this->running = false;
+	this->m_running = false;
+}
+
+SDL_Surface* PCEngine::GetDisplay()
+{
+	return m_display;
+}
+
+void PCEngine::OnLButtonDown( int x, int y )
+{
+	PCEvent::OnLButtonDown( x, y );
 }

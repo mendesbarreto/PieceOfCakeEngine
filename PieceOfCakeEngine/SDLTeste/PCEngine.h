@@ -4,23 +4,28 @@
 #include "SDL.h"
 #include "PCSprite.h"
 #include "PCEvent.h"
+#include "PCSize.h"
 
 class PCEngine : public PCEvent
 {
 
 private:
 	//
-	bool running;
+	bool m_running;
+	PCSize m_winSize;
 
-	SDL_Surface* display;
+	
 	PCSprite* test;
 
 public:
 	int OnExecute();
 
+protected:
+	SDL_Surface* m_display;
 
 public:
 	PCEngine(void);
+	PCEngine(PCSize winSize);
 	~PCEngine(void);
 
 	virtual bool Initialize();
@@ -29,7 +34,10 @@ public:
 	virtual void Dispose();
 
 	virtual void OnEvent(SDL_Event * event);
+	virtual void OnLButtonDown(int x, int y);
 	virtual void OnExit();
+
+	SDL_Surface* GetDisplay();
 };
 
 #endif // !__PC_ENGINE__
