@@ -8,6 +8,9 @@ class PCSprite
 
 private:
 	SDL_Surface* m_rawContent;
+	static Uint8 GetRedComponent(SDL_Surface* surface);
+	static Uint8 GetAlphaComponent(SDL_Surface* surface);
+
 
 public:
 

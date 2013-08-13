@@ -22,8 +22,6 @@ PCSprite* PCSprite::fromFile( char* fileName )
 	SDL_Surface* temp_surface = IMG_Load(fileName);
 	SDL_Surface* return_surface = nullptr;
 
-	std::string prefix = std::string(fileName);
-
 	if(temp_surface == NULL)
 	{
 		//ERROR;
@@ -32,12 +30,15 @@ PCSprite* PCSprite::fromFile( char* fileName )
 
 		return nullptr;
 	}
-
-
-	//Take the number of channels in the display image
-	Uint8  pi = temp_surface->format;
 	
-	return_surface = SDL_DisplayFormatAlpha(temp_surface);
+	//Verify if image has alpha channel
+	if(temp_surface->format->Amask != 0)
+	{
+		return_surface = SDL_DisplayFormatAlpha(temp_surface);
+	}else
+	{
+		return_surface = SDL_DisplayFormat(temp_surface);
+	}
 	
 	PCSprite* returnSprite = new PCSprite();
 	returnSprite->m_rawContent = return_surface;
@@ -103,3 +104,57 @@ bool PCSprite::RemoveRGBColorFrom( PCSprite *src, int r, int g, int b )
 
 	return true;
 }
+
+//TODO: Uint8 PCSprite::GetBlueComponent()
+//TODO: Uint8 PCSprite::GetGreenComponent()
+
+
+Uint8 PCSprite::GetRedComponent(SDL_Surface* surface)
+{
+
+	/* Extracting color components from a 32-bit color value */
+    SDL_PixelFormat *fmt;
+    Uint32 temp, pixel;
+    Uint8 red;
+   
+    fmt = surface->format;
+   SDL_LockSurface(surface);
+   pixel = *((Uint32*)surface->pixels);
+   SDL_UnlockSurface(surface);
+   
+   /* Get Red component */
+   temp = pixel & fmt->Rmask;  /* Isolate red component */
+   temp = temp >> fmt->Rshift; /* Shift it down to 8-bit */
+   temp = temp << fmt->Rloss;  /* Expand to a full 8-bit number */
+   red = (Uint8)temp;
+   
+
+   return red;
+}
+
+
+
+Uint8 PCSprite::GetAlphaComponent(SDL_Surface* surface)
+{
+
+	/* Extracting color components from a 32-bit color value */
+	SDL_PixelFormat *fmt = surface->format;
+	Uint32 temp, pixel;
+	Uint8 alpha;
+
+	SDL_LockSurface(surface);
+	pixel = *((Uint32*)surface->pixels);
+	SDL_UnlockSurface(surface);
+
+	/* Get Red component */
+	temp = pixel & fmt->Amask;  /* Isolate red component */
+	temp = temp >> fmt->Ashift; /* Shift it down to 8-bit */
+	temp = temp << fmt->Aloss;  /* Expand to a full 8-bit number */
+	
+	alpha = (Uint8)temp;
+
+
+	return alpha;
+}
+
+
