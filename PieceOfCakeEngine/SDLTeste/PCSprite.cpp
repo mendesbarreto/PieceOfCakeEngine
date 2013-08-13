@@ -1,5 +1,7 @@
 #include "SDL.h"
 #include "SDL_Image.h"
+#include <iostream>
+
 
 #include "PCSprite.h"
 #include <iostream>
@@ -17,9 +19,10 @@ PCSprite::~PCSprite(void)
 
 PCSprite* PCSprite::fromFile( char* fileName )
 {
-
 	SDL_Surface* temp_surface = IMG_Load(fileName);
 	SDL_Surface* return_surface = nullptr;
+
+	std::string prefix = std::string(fileName);
 
 	if(temp_surface == NULL)
 	{
@@ -30,11 +33,16 @@ PCSprite* PCSprite::fromFile( char* fileName )
 		return nullptr;
 	}
 
-	return_surface = SDL_DisplayFormat(temp_surface);
-	SDL_FreeSurface(temp_surface);
 
+	//Take the number of channels in the display image
+	Uint8  pi = temp_surface->format;
+	
+	return_surface = SDL_DisplayFormatAlpha(temp_surface);
+	
 	PCSprite* returnSprite = new PCSprite();
 	returnSprite->m_rawContent = return_surface;
+
+	SDL_FreeSurface(temp_surface);
 
 	return returnSprite;
 }

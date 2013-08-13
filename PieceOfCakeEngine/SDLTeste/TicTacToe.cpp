@@ -154,8 +154,8 @@ bool TicTacToe::Initialize()
 		return false;
 
 
-	PCSprite::RemoveRGBColorFrom(m_xSprite, 255,0,255);
-	PCSprite::RemoveRGBColorFrom(m_oSprite, 255,0,255);
+	//PCSprite::RemoveRGBColorFrom(m_xSprite, 255,0,255);
+	//PCSprite::RemoveRGBColorFrom(m_oSprite, 255,0,255);
 
 	Reset();
 
