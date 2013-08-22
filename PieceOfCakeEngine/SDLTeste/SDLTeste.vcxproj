@@ -40,8 +40,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>D:\Development\GameDev\SDKs\SDL\include;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\Development\GameDev\SDKs\SDL\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>\Development\GameDev\SDKs\SDL\include;$(IncludePath)</IncludePath>
+    <LibraryPath>\Development\GameDev\SDKs\SDL\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
