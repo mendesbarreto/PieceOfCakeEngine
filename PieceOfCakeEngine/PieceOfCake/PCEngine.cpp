@@ -111,7 +111,6 @@ void PCEngine::Render(){
 	SDL_RenderClear(m_renderer);
 	SDL_RenderCopy(m_renderer, m_screen, NULL, NULL);
 	SDL_RenderPresent(m_renderer);
-
 	
 }
 
@@ -137,4 +136,9 @@ void PCEngine::OnLButtonDown( int x, int y )
 SDL_Renderer* PCEngine::GetRenderer()
 {
 	return m_renderer;
+}
+
+PCEngine* PCEngine::GetInstace()
+{
+	return m_instance;
 }

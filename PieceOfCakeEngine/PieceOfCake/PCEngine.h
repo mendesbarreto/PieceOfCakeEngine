@@ -19,12 +19,17 @@ private:
 	std::string m_name;
 	PCSprite* test;
 
+
+	static PCEngine* m_instance;
+
+
 	//Move this variable to some camera
 	Uint32 *m_pixels;
 
 
 public:
 	int OnExecute();
+	static PCEngine* GetInstace();
 
 protected:
 	SDL_Window* m_window;
