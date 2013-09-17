@@ -14,7 +14,7 @@ PCSprite::PCSprite(void)
 
 PCSprite::~PCSprite(void)
 {
-	SDL_FreeSurface(m_texture);
+	SDL_DestroyTexture(m_texture);
 }
 
 PCSprite* PCSprite::fromFile( char* fileName )
@@ -54,7 +54,7 @@ bool PCSprite::Draw( SDL_Texture* destination, SDL_Texture* source, int x, int y
 	SDL_Rect rect;
 	rect.x = x;
 	rect.y = y;
-	//SDL_BlitSurface(source, NULL, destination, &rect);
+	//SDL_BlitSurfac(esource, NULL, destination, &rect);
 
 	return true;
 }
