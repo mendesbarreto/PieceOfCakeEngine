@@ -7,6 +7,40 @@
 #include <iostream>
 #include <stdio.h>
 
+
+SDL_Texture* loadTexture( std::string path )
+{
+	PCEngine* engine = PCEngine::GetInstace();
+
+	//The final texture
+	SDL_Texture* newTexture = NULL;
+
+	//Load image at specified path
+	SDL_Surface* loadedSurface = IMG_Load( path.c_str() );
+
+	if( loadedSurface == NULL )
+	{
+		printf( "Unable to load image %s! SDL_image Error: %s\n", path.c_str(), IMG_GetError() );
+
+	}
+	else
+	{
+		//Create texture from surface pixels
+		newTexture = SDL_CreateTextureFromSurface( engine->GetRenderer() , loadedSurface );
+
+		if( newTexture == NULL )
+		{
+			printf( "Unable to create texture from %s! SDL Error: %s\n", path.c_str(), SDL_GetError() );
+		}
+
+		//Get rid of old loaded surface
+		SDL_FreeSurface( loadedSurface );
+	}
+
+	return newTexture;
+}
+
+
 PCSprite::PCSprite(void)
 {
 
@@ -19,22 +53,9 @@ PCSprite::~PCSprite(void)
 
 PCSprite* PCSprite::fromFile( char* fileName )
 {
-	//TODO: Make a LoaderCOntent for Texture and Image
-	PCEngine* engine = PCEngine::GetInstace();
-
-	SDL_Texture* temp_surface = IMG_LoadTexture(engine->GetRenderer(), fileName);
-
-	if(temp_surface == NULL)
-	{
-		//ERROR;
-		const char* buffer = IMG_GetError();
-		printf(buffer);
-
-		return nullptr;
-	}
-	
 	PCSprite* returnSprite = new PCSprite();
-	returnSprite->m_texture = temp_surface;
+
+	returnSprite->m_texture = loadTexture(fileName);
 
 	return returnSprite;
 }

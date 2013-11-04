@@ -1,7 +1,7 @@
 #ifndef __PC_ENGINE__
 #define __PC_ENGINE__
 
-#include "SDL.h"
+#include <SDL.h>
 #include "PCSprite.h"
 #include "PCEvent.h"
 #include "PCSize.h"

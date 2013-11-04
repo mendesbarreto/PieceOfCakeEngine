@@ -1,46 +1,23 @@
-﻿Build started 05/09/2013 10:49:29.
-     1>Project "C:\GitHub\PieceOfCakeEngine\PieceOfCakeEngine\PieceOfCake\PieceOfCake.vcxproj" on node 2 (Build target(s)).
+﻿Build started 10/2/2013 9:44:20 PM.
+     1>Project "D:\GitHub\PieceOfCakeEngine\PieceOfCakeEngine\PieceOfCake\PieceOfCake.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /Od /D _MBCS /Gm /EHsc /RTC1 /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc110.pdb" /Gd /TP /errorReport:prompt PCEngine.cpp PCSprite.cpp PCVec2D.cpp TicTacToe.cpp
-         TicTacToe.cpp
-     1>TicTacToe.cpp(10): error C2664: 'PCEngine::PCEngine(const PCEngine &)' : cannot convert parameter 1 from 'PCSize' to 'const PCEngine &'
-                 Reason: cannot convert from 'PCSize' to 'const PCEngine'
-                 No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
-     1>TicTacToe.cpp(110): error C2065: 'm_display' : undeclared identifier
-     1>TicTacToe.cpp(114): error C2065: 'm_display' : undeclared identifier
-     1>TicTacToe.cpp(117): error C2065: 'm_display' : undeclared identifier
-     1>TicTacToe.cpp(131): error C2065: 'm_display' : undeclared identifier
-     1>TicTacToe.cpp(134): error C2065: 'm_display' : undeclared identifier
-         PCVec2D.cpp
-     1>PCVec2D.cpp(5): error C2572: 'PCVec2D::PCVec2D' : redefinition of default parameter : parameter 2
-                 c:\github\pieceofcakeengine\pieceofcakeengine\pieceofcake\PCVec2D.h(10) : see declaration of 'PCVec2D::PCVec2D'
-     1>PCVec2D.cpp(5): error C2572: 'PCVec2D::PCVec2D' : redefinition of default parameter : parameter 1
-                 c:\github\pieceofcakeengine\pieceofcakeengine\pieceofcake\PCVec2D.h(10) : see declaration of 'PCVec2D::PCVec2D'
-         PCSprite.cpp
-     1>PCSprite.cpp(22): error C2065: 'dfileName' : undeclared identifier
-     1>PCSprite.cpp(22): error C3861: 'IMG_Loa': identifier not found
-     1>PCSprite.cpp(28): error C2440: 'initializing' : cannot convert from 'const char *' to 'char *'
-                 Conversion loses qualifiers
-     1>PCSprite.cpp(35): error C2027: use of undefined type 'SDL_Texture'
-                 c:\development\environment\sdl2\include\SDL_render.h(127) : see declaration of 'SDL_Texture'
-     1>PCSprite.cpp(35): error C2227: left of '->format' must point to class/struct/union/generic type
-     1>PCSprite.cpp(35): error C2227: left of '->Amask' must point to class/struct/union/generic type
-     1>PCSprite.cpp(37): error C3861: 'SDL_DisplayFormatAlpha': identifier not found
-     1>PCSprite.cpp(40): error C3861: 'SDL_DisplayFormat': identifier not found
-     1>PCSprite.cpp(44): error C2440: '=' : cannot convert from 'SDL_Texture *' to 'SDL_Surface *'
-                 Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
-     1>PCSprite.cpp(46): error C2664: 'SDL_FreeSurface' : cannot convert parameter 1 from 'SDL_Texture *' to 'SDL_Surface *'
-                 Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
-     1>PCSprite.cpp(103): error C2065: 'SDL_SRCCOLORKEY' : undeclared identifier
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /Od /D _MBCS /Gm /EHsc /RTC1 /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc110.pdb" /Gd /TP /errorReport:prompt PCEngine.cpp
          PCEngine.cpp
-     1>PCEngine.cpp(45): error C2664: 'SDL_JoystickName' : cannot convert parameter 1 from 'int' to 'SDL_Joystick *'
-                 Conversion from integral type to pointer type requires reinterpret_cast, C-style cast or function-style cast
-     1>PCEngine.cpp(56): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>PCEngine.cpp(66): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>PCEngine.cpp(111): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-         Generating Code...
-     1>Done Building Project "C:\GitHub\PieceOfCakeEngine\PieceOfCakeEngine\PieceOfCake\PieceOfCake.vcxproj" (Build target(s)) -- FAILED.
+     1>PCEngine.cpp(77): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>PCEngine.cpp(77): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>PCEngine.cpp(104): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>PCEngine.cpp(114): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"D:\GitHub\PieceOfCakeEngine\PieceOfCakeEngine\x64\Debug\PieceOfCake.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Development\Environment\SDL2\lib\x64 SDL2.lib SDL2main.lib SDL2_image.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\GitHub\PieceOfCakeEngine\PieceOfCakeEngine\x64\Debug\PieceOfCake.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\GitHub\PieceOfCakeEngine\PieceOfCakeEngine\x64\Debug\PieceOfCake.lib" /MACHINE:X64 x64\Debug\main.obj
+         x64\Debug\PCEngine.obj
+         x64\Debug\PCEvent.obj
+         x64\Debug\PCSize.obj
+         x64\Debug\PCSprite.obj
+         x64\Debug\PCVec2D.obj
+         x64\Debug\TicTacToe.obj
+         PieceOfCake.vcxproj -> D:\GitHub\PieceOfCakeEngine\PieceOfCakeEngine\x64\Debug\PieceOfCake.exe
+     1>Done Building Project "D:\GitHub\PieceOfCakeEngine\PieceOfCakeEngine\PieceOfCake\PieceOfCake.vcxproj" (Build target(s)).
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:00:01.44
+Time Elapsed 00:00:00.96

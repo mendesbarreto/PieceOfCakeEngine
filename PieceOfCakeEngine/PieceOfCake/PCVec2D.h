@@ -7,7 +7,8 @@ private:
 
 
 public:
-	PCVec2D::PCVec2D(int x = 0, int y = 0);
+	PCVec2D(int x, int y);
+	PCVec2D();
 	~PCVec2D(void);
 
 

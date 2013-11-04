@@ -15,9 +15,11 @@ TicTacToe::TicTacToe( std::string name = "TicTacToe",
 }
 
 
+
+
 void TicTacToe::Update()
 {
-
+	/*
 	if(VerifyV(grid, GRID_TYPE_X) || VerifyH(grid, GRID_TYPE_X) || VerifyD(grid, GRID_TYPE_X))
 	{
 		wins = "x";
@@ -37,7 +39,7 @@ void TicTacToe::Update()
 
 	if(count == gridSize)
 		Reset();
-
+		*/
 	PCEngine::Update();
 }
 
@@ -110,14 +112,16 @@ bool TicTacToe::VerifyH(short *grid, int type)
 
 void TicTacToe::Render()
 {
-	PCSprite::Draw(m_screen, m_grid->getRaw(),0,0);
+	/*
+	
+	PCSprite::Draw(m_screen, m_grid->GetTexture(),0,0);
 
 	if (wins == "x")
 	{
-		PCSprite::Draw(m_screen, m_xWins->getRaw(), 0,0);
+		PCSprite::Draw(m_screen, m_xWins->GetTexture(), 0,0);
 	}else if(wins == "o")
 	{
-		PCSprite::Draw(m_screen, m_oWins->getRaw(), 0,0);
+		PCSprite::Draw(m_screen, m_oWins->GetTexture(), 0,0);
 	}else
 	{
 		int i;
@@ -131,14 +135,15 @@ void TicTacToe::Render()
 
 			if(grid[i] == GRID_TYPE_O)
 			{
-				PCSprite::Draw(m_screen, m_oSprite->getRaw(), x,y);
+				PCSprite::Draw(m_screen, m_oSprite->GetTexture(), x,y);
 			}else if(grid[i] == GRID_TYPE_X)
 			{
-				PCSprite::Draw(m_screen, m_xSprite->getRaw(), x,y);
+				PCSprite::Draw(m_screen, m_xSprite->GetTexture(), x,y);
 			}
 		}
 	}
 
+	*/
 	PCEngine::Render();
 }
 
@@ -214,4 +219,3 @@ void TicTacToe::OnLButtonDown( int x, int y )
 
 	PCEngine::OnLButtonDown(x,y);
 }
-

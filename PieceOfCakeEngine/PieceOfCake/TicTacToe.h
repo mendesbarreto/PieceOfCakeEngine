@@ -30,6 +30,7 @@ public:
 	short  grid[9];
 
 	TicTacToe(std::string name, PCSize winSize, PCVec2D windowPosition ,Uint32 flags);
+	
 
 	void Update();
 	void Render();

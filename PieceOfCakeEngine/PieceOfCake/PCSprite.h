@@ -11,9 +11,7 @@ private:
 	static Uint8 GetRedComponent(SDL_Texture* surface);
 	static Uint8 GetAlphaComponent(SDL_Texture* surface);
 
-
 public:
-
 	static PCSprite	* fromFile(char* fileName);
 	static bool Draw(SDL_Texture* destination, SDL_Texture* source, int x, int y);
 	static bool Draw(SDL_Texture* destination, SDL_Texture* source, int x, int y, int x2, int y2, int width, int height);
